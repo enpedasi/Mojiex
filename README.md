@@ -27,7 +27,7 @@ Mojiex.convert("ＡＢＣＤ　０１２３４あいうアイウABCD 01234ｱｲ
 
 combination of {``from``, ``to`` }
 
-|  |  |  |  |  |
+|atom  |kind  |  |atom |kind  |
 |---|---|---|---|---|
 |:zk  |全角カタカナ  |↔|:hk | 半角カタカナ |
 |:ze  |全角英数      |↔|:he | 半角英数 |
