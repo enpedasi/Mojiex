@@ -9,7 +9,7 @@ Japanese strings - Wide/Half "Kana" characters Conversion Library for Elixir lan
 ```elixir
 def deps do
   [
-    {:mojiex, github: "enpedasi/mojiex", tag: "0.0.1"},    
+    {:mojiex, github: "enpedasi/mojiex"},    
   ]
 end
 ```
@@ -26,6 +26,7 @@ Mojiex.convert("ＡＢＣＤ　０１２３４あいうアイウABCD 01234ｱｲ
 - Mojiex.convert( ``source string``,  {``from``, ``to`` })
 
 combination of {``from``, ``to`` }
+
 |  |  |  |  |  |
 |---|---|---|---|---|
 |:zk  |全角カタカナ  |↔|:hk | 半角カタカナ |
