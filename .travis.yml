@@ -6,3 +6,6 @@ matrix:
       elixir: 1.6.6
 
 sudo: false
+
+script:
+  - mix credo
