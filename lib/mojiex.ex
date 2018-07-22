@@ -117,19 +117,16 @@ defmodule Mojiex do
       {"ヷ", "ﾜﾞ"}
     ]
   ]
-  def convert(str, {from, to}) do
-    case {from, to} do
-      {:zk, :hk} -> zh_map(&ch_zk_hk/1, str)
-      {:hk, :zk} -> zh_map(&ch_hk_zk/1, str)
-      {:hs, :zs} -> zh_map(&ch_hs_zs/1, str)
-      {:zs, :hs} -> zh_map(&ch_zs_hs/1, str)
-      {:ze, :he} -> conv_range(str, from, to)
-      {:he, :ze} -> conv_range(str, from, to)
-      {:hg, :kk} -> conv_range(str, from, to)
-      {:kk, :hg} -> conv_range(str, from, to)
-      _ -> str
-    end
-  end
+
+  def convert(str, {:zk, :hk}), do: zh_map(&ch_zk_hk/1, str)
+  def convert(str, {:hk, :zk}), do: zh_map(&ch_hk_zk/1, str)
+  def convert(str, {:hs, :zs}), do: zh_map(&ch_hs_zs/1, str)
+  def convert(str, {:zs, :hs}), do: zh_map(&ch_zs_hs/1, str)
+  def convert(str, {:ze, :he} = {from, to}), do: conv_range(str, from, to)
+  def convert(str, {:he, :ze} = {from, to}), do: conv_range(str, from, to)
+  def convert(str, {:hg, :kk} = {from, to}), do: conv_range(str, from, to)
+  def convert(str, {:kk, :hg} = {from, to}), do: conv_range(str, from, to)
+  def convert(str, _), do: str
 
   defp conv_range(str, from_kind, to_kind) do
     dist = @zenhan_list[from_kind][:start] - @zenhan_list[to_kind][:start]
