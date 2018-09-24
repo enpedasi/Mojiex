@@ -1,6 +1,6 @@
 # Mojiex
 
-[![Build Status](https://travis-ci.org/enpedasi/mojiex.svg?branch=master)](https://travis-ci.org/enpedasi/mojiex)
+[![Build Status](https://travis-ci.org/enpedasi/Mojiex.svg?branch=master)](https://travis-ci.org/enpedasi/mojiex)
 
 Japanese strings - Wide/Half "Kana" characters Conversion Library for Elixir lang
 
