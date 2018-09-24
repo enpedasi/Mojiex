@@ -169,12 +169,4 @@ defmodule Mojiex do
     @zenhan_list
   end
 
-  def test() do
-    :timer.tc(fn ->
-      Enum.reduce(
-        0..100_000,
-        fn _, _ -> convert("あいう123オ", {:he, :ze}) |> convert({:hg, :kk}) end
-      )
-    end)
-  end
 end
