@@ -10,3 +10,5 @@ sudo: false
 script:
   - mix credo
   - mix format --check-formatted
+  - mix dialyzer --halt-exit-status
+  - mix test
