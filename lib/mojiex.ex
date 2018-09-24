@@ -168,5 +168,4 @@ defmodule Mojiex do
   def list() do
     @zenhan_list
   end
-
 end
