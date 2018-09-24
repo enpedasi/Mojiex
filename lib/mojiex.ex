@@ -117,17 +117,28 @@ defmodule Mojiex do
       {"ヷ", "ﾜﾞ"}
     ]
   ]
+  @type zh_pair :: {atom(), atom()}
 
+  @spec convert(binary, zh_pair()) :: binary
   def convert(str, {:zk, :hk}), do: zh_map(&ch_zk_hk/1, str)
-  def convert(str, {:hk, :zk}), do: zh_map(&ch_hk_zk/1, str)
-  def convert(str, {:hs, :zs}), do: zh_map(&ch_hs_zs/1, str)
-  def convert(str, {:zs, :hs}), do: zh_map(&ch_zs_hs/1, str)
-  def convert(str, {:ze, :he} = {from, to}), do: conv_range(str, from, to)
-  def convert(str, {:he, :ze} = {from, to}), do: conv_range(str, from, to)
-  def convert(str, {:hg, :kk} = {from, to}), do: conv_range(str, from, to)
-  def convert(str, {:kk, :hg} = {from, to}), do: conv_range(str, from, to)
-  def convert(str, _), do: str
 
+  def convert(str, {:hk, :zk}), do: zh_map(&ch_hk_zk/1, str)
+
+  def convert(str, {:hs, :zs}), do: zh_map(&ch_hs_zs/1, str)
+
+  def convert(str, {:zs, :hs}), do: zh_map(&ch_zs_hs/1, str)
+
+  def convert(str, {:ze, :he} = {from, to}), do: conv_range(str, from, to)
+
+  def convert(str, {:he, :ze} = {from, to}), do: conv_range(str, from, to)
+
+  def convert(str, {:hg, :kk} = {from, to}), do: conv_range(str, from, to)
+
+  def convert(str, {:kk, :hg} = {from, to}), do: conv_range(str, from, to)
+
+  # def convert(str, _), do: str
+
+  @spec conv_range(binary, atom(), atom()) :: binary
   defp conv_range(str, from_kind, to_kind) do
     dist = @zenhan_list[from_kind][:start] - @zenhan_list[to_kind][:start]
     start_ch = @zenhan_list[from_kind][:start]
@@ -143,29 +154,35 @@ defmodule Mojiex do
     |> to_string
   end
 
+  @spec zh_map(fun(), binary) :: binary
   defp zh_map(map_fn, str) do
     to_charlist(str)
     |> Enum.map(&map_fn.(<<&1::utf8>>))
     |> to_string
   end
 
+  @spec ch_zk_hk(binary) :: binary
   defp ch_zk_hk(code) do
     List.keyfind(@zenhan_list[:zk], code, 0, {nil, code}) |> elem(1)
   end
 
+  @spec ch_hk_zk(binary) :: binary
   defp ch_hk_zk(code) do
     List.keyfind(@zenhan_list[:zk], code, 1, {code, nil}) |> elem(0)
   end
 
+  @spec ch_zs_hs(binary) :: binary
   def ch_zs_hs(code) do
     List.keyfind(@zenhan_list[:zs], code, 0, {nil, code}) |> elem(1)
   end
 
+  @spec ch_hs_zs(binary) :: binary
   defp ch_hs_zs(code) do
     List.keyfind(@zenhan_list[:zs], code, 1, {code, nil}) |> elem(0)
   end
 
-  def list() do
+  @spec list :: list()
+  def list do
     @zenhan_list
   end
 end
