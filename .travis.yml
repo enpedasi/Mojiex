@@ -7,6 +7,11 @@ matrix:
 
 sudo: false
 
+cache:
+  directories:
+    - _build
+    - deps
+
 script:
   - mix credo
   - mix format --check-formatted
