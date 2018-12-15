@@ -1,15 +1,24 @@
 defmodule Mojiex do
   @moduledoc """
-  Documentation for Mojiex.
+  Japanese strings - Wide/Half "Kana" charactors Conversion Library for Elixir lang.
   """
 
   @doc """
   Japanese strings - Wide/Half "Kana" charactors Conversion Library for Elixir lang
 
+  ## option conbination
+
+  |atom  |kind  |  |atom |kind  |
+  |---|---|---|---|---|
+  |:zk  |全角カタカナ  |↔|:hk | 半角カタカナ |
+  |:ze  |全角英数      |↔|:he | 半角英数 |
+  |:he  |ひらがな      |↔|:kk | カタカナ |
+  |:zs  |全角SPACE     |↔|:hs | 半角SPACE |
+
   ## Examples
 
       iex> Mojiex.convert("ＡＢＣＤ　０１２３４あいうアイウABCD 01234ｱｲｳ",{:hk, :zk})
-      "ＡＢＣＤ　０１２３４あいうあいうABCD 01234あいう"            
+      "ＡＢＣＤ　０１２３４あいうあいうABCD 01234あいう"
 
   """
 
