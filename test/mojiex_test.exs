@@ -1,7 +1,6 @@
 defmodule MojiexTest do
-  use PowerAssert
-  # use ExUnit.Case
-  # doctest Mojiex
+  use ExUnit.Case
+  doctest Mojiex
 
   test "Basic" do
     assert Mojiex.convert("ＡＢＣＤ　０１２３４あいうアイウABCD 01234ｱｲｳ", {:ze, :he}) ==
