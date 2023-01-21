@@ -4,7 +4,7 @@ defmodule Mojiex.MixProject do
   def project do
     [
       app: :mojiex,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.6",
       description: "Japanese strings - Wide/Half Kana characters Conversion Library",
       source_url: "https://github.com/enpedasi/Mojiex",
